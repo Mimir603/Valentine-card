@@ -18,18 +18,21 @@ envelope.addEventListener("click", () => {
     },50);
 });
 
-noBtn.addEventListener("click", () => {
 
-    const rect = noBtn.getBoundingClientRect();
+noBtn.addEventListener("mouseover", () => {
+    const min = 200;
+    const max = 200;
 
-    const maxX = 425 - 41;
-    const maxY = 861 - 54;
+    const distance = Math.random() * (max - min) + min;
+    const angle = Math.random() * Math.PI * 2;
 
-    const randomX = Math.random() * maxX - rect.left;
-    const randomY = Math.random() * maxY - rect.top;
+    const moveX = Math.cos(angle) * distance;
+    const moveY = Math.sin(angle) * distance;
 
-    noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    noBtn.style.transition = "transform 0.2s ease";
+    noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
 });
+
 
 
 // yesBtn.style.position = "relative"
