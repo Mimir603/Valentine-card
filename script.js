@@ -19,27 +19,32 @@ envelope.addEventListener("click", () => {
 });
 
 
-noBtn.addEventListener("click", () => {
+noBtn.addEventListener("touchstart", (e) => {
 
-    const btnWidth = noBtn.offsetWidth;
-    const btnHeight = noBtn.offsetHeight;
+    const touch = e.touches[0];
 
-    const screenWidth = window.innerWidth;
-    const screenHeight = window.innerHeight;
-    
-    const padding = 20;
+    const fingerX = touch.clientX;
+    const fingerY = touch.clientY;
 
-    const maxX = screenWidth - btnWidth - padding;
-    const maxY = screenHeight - btnHeight - padding;
+    const rect = noBtn.getBoundingClientRect();
 
-    const randomX = Math.random() * (maxX - padding) + padding;
-    const randomY = Math.random() * (maxY - padding) + padding;
+    const btnCenterX = rect.left + rect.width / 2;
+    const btnCenterY = rect.top + rect.height / 2;
+
+    // Вектор от пальца к центру кнопки
+    const dx = btnCenterX - fingerX;
+    const dy = btnCenterY - fingerY;
+
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    // Нормализуем вектор
+    const moveX = (dx / distance) * 120;
+    const moveY = (dy / distance) * 120;
 
     noBtn.style.position = "fixed";
-    noBtn.style.left = randomX + "px";
-    noBtn.style.top = randomY + "px";
+    noBtn.style.left = rect.left + moveX + "px";
+    noBtn.style.top = rect.top + moveY + "px";
 });
-
 
 
 // yesBtn.style.position = "relative"
