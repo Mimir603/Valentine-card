@@ -19,7 +19,7 @@ envelope.addEventListener("click", () => {
 });
 
 
-noBtn.addEventListener("mouseover", () => {
+noBtn.addEventListener("click", () => {
     const min = 200;
     const max = 200;
 
