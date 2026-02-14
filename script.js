@@ -20,17 +20,22 @@ envelope.addEventListener("click", () => {
 
 
 noBtn.addEventListener("click", () => {
-    const min = 200;
-    const max = 200;
 
-    const distance = Math.random() * (max - min) + min;
-    const angle = Math.random() * Math.PI * 2;
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
 
-    const moveX = Math.cos(angle) * distance;
-    const moveY = Math.sin(angle) * distance;
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
 
-    noBtn.style.transition = "transform 0.2s ease";
-    noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    const maxX = screenWidth - btnWidth;
+    const maxY = screenHeight - btnHeight;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noBtn.style.position = "fixed";
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
 });
 
 
