@@ -26,12 +26,14 @@ noBtn.addEventListener("click", () => {
 
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
+    
+    const padding = 20;
 
-    const maxX = screenWidth - btnWidth;
-    const maxY = screenHeight - btnHeight;
+    const maxX = screenWidth - btnWidth - padding;
+    const maxY = screenHeight - btnHeight - padding;
 
-    const randomX = Math.random() * maxX;
-    const randomY = Math.random() * maxY;
+    const randomX = Math.random() * (maxX - padding) + padding;
+    const randomY = Math.random() * (maxY - padding) + padding;
 
     noBtn.style.position = "fixed";
     noBtn.style.left = randomX + "px";
