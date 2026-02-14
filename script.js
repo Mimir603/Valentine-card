@@ -18,32 +18,17 @@ envelope.addEventListener("click", () => {
     },50);
 });
 
-
-noBtn.addEventListener("touchstart", (e) => {
-
-    const touch = e.touches[0];
-
-    const fingerX = touch.clientX;
-    const fingerY = touch.clientY;
+noBtn.addEventListener("click", () => {
 
     const rect = noBtn.getBoundingClientRect();
 
-    const btnCenterX = rect.left + rect.width / 2;
-    const btnCenterY = rect.top + rect.height / 2;
+    const maxX = 425 - 41;
+    const maxY = 861 - 54;
 
-    // Вектор от пальца к центру кнопки
-    const dx = btnCenterX - fingerX;
-    const dy = btnCenterY - fingerY;
+    const randomX = Math.random() * maxX - rect.left;
+    const randomY = Math.random() * maxY - rect.top;
 
-    const distance = Math.sqrt(dx * dx + dy * dy);
-
-    // Нормализуем вектор
-    const moveX = (dx / distance) * 120;
-    const moveY = (dy / distance) * 120;
-
-    noBtn.style.position = "fixed";
-    noBtn.style.left = rect.left + moveX + "px";
-    noBtn.style.top = rect.top + moveY + "px";
+    noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
 });
 
 

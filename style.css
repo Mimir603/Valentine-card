@@ -97,13 +97,14 @@ p {
 
 .no-wrapper{
     position: relative;
+    overflow: visible;
 }
 
 button{
     cursor: pointer;
     user-select: none;
     font-family: "Pixelify Sans", sans-serif;
-    border: 12px deeppink 4px;
+    border: 4px solid deeppink;
     border-color: deeppink;
     color: deeppink;
     background-color: violet;
@@ -115,6 +116,11 @@ button{
     width: 110px;
     height: auto;
     display: inline-block;
+}
+
+.btn-no{
+    position: relative;
+    transition: transform 0.2s ease;
 }
 
 .btn-yes{
